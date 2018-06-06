@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:BethanysPieShop.Mobile.Core.Controls;assembly=BethanysPieShop.Mobile.Core"
+             x:Class="BethanysPieShop.Mobile.Core.Views.ContactView"
+             Title="Contact Us">
+    <ContentPage.Content>
+        <ScrollView >
+            <Grid BackgroundColor="White" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="500"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Image HeightRequest="150" Grid.Row="0" Source="carousel1.jpg" Aspect="AspectFill"></Image>
+                <StackLayout VerticalOptions="FillAndExpand" Grid.Row="1" Margin="5">
+                    <Label Text="Contact us" Margin="0, 5" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label  Margin="0, 5" Text="Thank you so much for stopping by. Without the support of our fellow pie lovers, Bethany's Pie Shop wouldn't be possible. Though we have a wide selection of pies for your pleasure, we also do special orders and would love to bring the sweets for your next big event." Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label Margin="0, 5" Text="If you have an event coming up, have a special request or just want to talk about pies, use the form below to send us a message!" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                    <controls:RoundedEntry Placeholder="Email" Margin="0, 5" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Email, Mode=TwoWay}"/>
+                    <controls:RoundedEntry Placeholder="Message" Margin="0, 5" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Message, Mode=TwoWay}"/>
+                    <Button Style="{StaticResource RegularButton}" Text="Submit comment" Command="{Binding SubmitMessageCommand}"></Button>
+                    <Label Margin="0, 5" Text="Or give us a call. You can call us directly from the app by clicking the button below!" Style="{StaticResource RegularStyle}"></Label>
+                    <Button Style="{StaticResource RegularButton}" Text="Call Us" Command="{Binding CallPhone}"></Button>
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
+                    <Label Text="© 2018 Bethany's Pie Shop" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

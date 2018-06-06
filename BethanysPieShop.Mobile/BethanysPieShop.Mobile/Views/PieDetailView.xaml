@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BethanysPieShop.Mobile.Core.Views.PieDetailView"
+             Title="More Details">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid BackgroundColor="White" RowSpacing="0" ColumnSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Image HeightRequest="150" Grid.Row="0" Source="{Binding SelectedPie.ImageUrl}" Aspect="AspectFill" VerticalOptions="StartAndExpand"></Image>
+                <Button Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" Margin="0,0,10,0" Text="Add to cart" 
+                        Style="{StaticResource RegularButton}" Command="{Binding AddToCartCommand}"></Button>
+                <Grid Grid.Row="1" Margin="5" BackgroundColor="White" RowSpacing="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="50"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding SelectedPie.Name}" Margin="3" Style="{StaticResource PieTileNameStyle}"></Label>
+                    <Label Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding SelectedPie.Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
+                    <Label Grid.Column="0" Grid.Row="1" Margin="3" Grid.ColumnSpan="2" Text="{Binding SelectedPie.ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>
+                </Grid>
+                <Label Margin="5" Style="{StaticResource PieLongDescriptionStyle}" Grid.Row="2" Text="{Binding SelectedPie.LongDescription}"></Label>
+                <Button Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,10,0" 
+                        Text="Read description" Style="{StaticResource RegularButton}" Command="{Binding ReadDescriptionCommand}"></Button>
+                <Grid Grid.Row="4">
+                    <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
+                    <Label Text="© 2018 Bethany's Pie Shop" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

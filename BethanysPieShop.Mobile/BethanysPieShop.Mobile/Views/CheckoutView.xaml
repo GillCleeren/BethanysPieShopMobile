@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BethanysPieShop.Mobile.Core.Views.CheckoutView"
+             Title="Check Out Now!">
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image HeightRequest="200" Grid.Row="0" Source="carousel3.jpg" Aspect="AspectFill"></Image>
+            <StackLayout Grid.Row="1">
+                <Label Text="CHECK OUT NOW" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
+            </StackLayout>
+        </Grid>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition> 
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="55"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="7*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Text="Enter your delivery address" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+            <Label Grid.Row="1" Grid.Column="0" Text="Street" VerticalOptions="Center"></Label>
+            <Label Grid.Row="2" Grid.Column="0" Text="Number" VerticalOptions="Center"></Label>
+            <Label Grid.Row="3" Grid.Column="0" Text="Zipcode" VerticalOptions="Center"></Label>
+            <Label Grid.Row="4" Grid.Column="0" Text="City" VerticalOptions="Center"></Label>
+            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding Address.Street}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
+            <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Address.Number}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
+            <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Address.ZipCode}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
+            <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Address.City}" Style="{StaticResource CheckoutEntryStyle}"></Entry>
+            <Button Text="Checkout now" Style="{StaticResource RegularButton}" Command="{Binding PlaceOrderCommand}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center"></Button>
+        </Grid>
+        <Grid>
+            <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
+            <Label Text="© 2018 Bethany's Pie Shop" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+        </Grid>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BethanysPieShop.Mobile.Core.Views.MenuView"
+             xmlns:behaviors="clr-namespace:BethanysPieShop.Mobile.Core.Behaviors"
+             xmlns:templates="clr-namespace:BethanysPieShop.Mobile.Core.Templates"
+             Title=" ">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="8*" />
+        </Grid.RowDefinitions>
+        <Grid 
+            Grid.Row="0">
+            <Image Source="carousel1.jpg" Aspect="AspectFill"></Image>
+            <Grid BackgroundColor="#444444" Opacity="0.8"/>
+            <Label Text="{Binding WelcomeText}" Style="{StaticResource MenuLabelStyle}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ListView ItemsSource="{Binding MenuItems}"  CachingStrategy="RecycleElement"
+                SeparatorVisibility="None" HasUnevenRows="True" >
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding MenuItemTappedCommand}"></behaviors:EventToCommandBehavior>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:MenuItemTemplate />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</ContentPage>

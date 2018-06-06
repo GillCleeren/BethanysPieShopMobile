@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BethanysPieShop.Mobile.Core.Views.LoginView"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:controls="clr-namespace:BethanysPieShop.Mobile.Core.Controls;assembly=BethanysPieShop.Mobile.Core"
+             BackgroundColor="{StaticResource BethanyPurple}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" HeightRequest="300" WidthRequest="200" Grid.Row="1" Grid.Column="1">
+            
+            <Frame AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,1,1" 
+                       BackgroundColor="White" HasShadow="true"
+                       CornerRadius="10" Margin="0, 25, 0, 25"
+                       >
+                <StackLayout Margin="0, 30">
+                    <Label Text="Sign in" Style="{StaticResource PageHeaderStyle}"></Label>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Not a member? " Style="{StaticResource RegularStyle}"></Label>
+                        <Label Text="Register today!" Style="{StaticResource LinkStyle}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer            
+                                        Command="{Binding RegisterCommand}"  
+                                        NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <controls:RoundedEntry Placeholder="User name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding UserName, Mode=TwoWay}"/>
+                    <controls:RoundedEntry IsPassword="True" Placeholder="Password" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Password, Mode=TwoWay}"/>
+                    <Button Style="{StaticResource RegularButton}" Text="Sign in" Command="{Binding LoginCommand}"></Button>
+                </StackLayout>
+            </Frame>
+            <Frame  AbsoluteLayout.LayoutFlags="PositionProportional" Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="Transparent"
+                    AbsoluteLayout.LayoutBounds="0.5,0,50,50" VerticalOptions="Fill" HorizontalOptions="Fill">
+                <Image Source="bethanylogowithborder.png" VerticalOptions="Start" Grid.Row="0" Grid.RowSpan="2"></Image>
+            </Frame>
+        </AbsoluteLayout>
+    </Grid>
+</ContentPage>

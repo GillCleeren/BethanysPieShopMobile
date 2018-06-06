@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:BethanysPieShop.Mobile.Core.Behaviors;assembly=BethanysPieShop.Mobile.Core"
+             Title="Shopping Cart"
+             x:Class="BethanysPieShop.Mobile.Core.Views.ShoppingCartView">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ListView VerticalOptions="FillAndExpand" Header="{Binding .}" Footer="{Binding .}" ItemsSource="{Binding ShoppingCartItems}" CachingStrategy="RecycleElement" 
+                SeparatorVisibility="None" HasUnevenRows="True">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding ShoppingCartItemCommand}" 
+                                                  EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                    </behaviors:EventToCommandBehavior>
+                </ListView.Behaviors>
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="8*"></RowDefinition>
+                                <RowDefinition Height="2*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image HeightRequest="200" Grid.Row="0" Source="carousel3.jpg" Aspect="AspectFill"></Image>
+                            <StackLayout Grid.Row="1">
+                                <Label Text="YOUR CART" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Text="Check your order and head to checkout" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="5" BackgroundColor="White" RowSpacing="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="32"></RowDefinition>
+                                    <RowDefinition Height="2"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding Pie.ImageUrl}"></Image>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Pie.Name}" Margin="3" Style="{StaticResource PieTileNameStyle}"></Label>
+                                <Label Grid.Row="0" Grid.Column="2"  Margin="3" Text="{Binding Pie.Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
+                                <Label Grid.Column="1" Grid.Row="1" Margin="3" Grid.ColumnSpan="2" Text="{Binding Pie.ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>
+                                <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" HeightRequest="30">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Quantity" Grid.Row="0" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
+                                    <Label Text="Price/pie" Grid.Row="0" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
+                                    <Label Text="Line total" Grid.Row="0" Grid.Column="2" Style="{StaticResource ShoppingCartTileSmallHeaderStyle}"></Label>
+                                    <Label Text="{Binding Quantity}" Grid.Row="1" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
+                                    <Label Text="{Binding Pie.Price, Converter={StaticResource LocalCurrencyConverter}}" Grid.Row="1" Grid.Column="1" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
+                                    <Label Text="{Binding Total, Converter={StaticResource LocalCurrencyConverter}}" Grid.Row="1" Grid.Column="2" Style="{StaticResource ShoppingCartTileSmallStyle}"></Label>
+                                </Grid>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.FooterTemplate>
+                    <DataTemplate>
+                        <Grid RowSpacing="0" Margin="3, 0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="6*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid BackgroundColor="White" IsVisible="{Binding ShoppingCartItems.Count, Converter={StaticResource LocalCountToVisibilityConverter}, ConverterParameter=True}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15"></RowDefinition>
+                                    <RowDefinition Height="15"></RowDefinition>
+                                    <RowDefinition Height="15"></RowDefinition>
+                                    <RowDefinition Height="15"></RowDefinition>
+                                    <RowDefinition Height="25"></RowDefinition>
+                                    <RowDefinition Height="50"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Your order" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RegularStyle}"></Label>
+                                <Label Text="Purchase total" Grid.Row="1" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}" ></Label>
+                                <Label Text="Taxes" Grid.Row="2" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}"></Label>
+                                <Label Text="Shipping" Grid.Row="3" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}"></Label>
+                                <Label Text="Total" Grid.Row="4" Grid.Column="0" Style="{StaticResource ShoppingCartLabelTotalStyle}"></Label>
+                                <Label Text="{Binding OrderTotal, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="1" Grid.Column="1" ></Label>
+                                <Label Text="{Binding Taxes, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="2" Grid.Column="1" ></Label>
+                                <Label Text="{Binding Shipping, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="3" Grid.Column="1" ></Label>
+                                <Label Text="{Binding GrandTotal, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTotalStyle}" Grid.Row="4"  Grid.Column="1" ></Label>
+                                <Button Text="Checkout" Style="{StaticResource RegularButton}" Command="{Binding CheckOutCommand}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center"></Button>
+                            </Grid>
+                            <Grid IsVisible="{Binding ShoppingCartItems.Count, Converter={StaticResource LocalCountToVisibilityConverter}, ConverterParameter=False}" VerticalOptions="CenterAndExpand">
+                                <Label Text="Please add some pies first" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.FooterTemplate>
+            </ListView>
+            <Grid Grid.Row="1">
+                <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
+                <Label Text="© 2018 Bethany's Pie Shop" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

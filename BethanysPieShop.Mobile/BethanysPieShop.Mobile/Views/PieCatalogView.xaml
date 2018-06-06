@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BethanysPieShop.Mobile.Core.Views.PieCatalogView"
+             xmlns:utility="clr-namespace:BethanysPieShop.Mobile.Core.Utility;assembly=BethanysPieShop.Mobile.Core"
+             xmlns:behaviors="clr-namespace:BethanysPieShop.Mobile.Core.Behaviors;assembly=BethanysPieShop.Mobile.Core"
+             utility:ViewModelLocator.AutoWireViewModel="True"
+             BackgroundImage="darktexture.jpg" 
+             Title="All Pies"
+             x:Name="PieCatalogViewPage"
+             >
+    <Grid>
+        <ListView VerticalOptions="FillAndExpand" Header="{Binding .}" Footer="{Binding .}" ItemsSource="{Binding Pies}" CachingStrategy="RecycleElement"
+            SeparatorVisibility="Default"
+            
+            HasUnevenRows="True">
+            <ListView.Behaviors>
+                <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding PieTappedCommand}" 
+                                                  EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
+                </behaviors:EventToCommandBehavior>
+            </ListView.Behaviors>
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="8*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Image HeightRequest="200" Grid.Row="0" Source="carousel3.jpg" Aspect="AspectFill"></Image>
+                        <StackLayout Grid.Row="1">
+                            <Label Text="OUR SELECTION OF PIES" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="5" BackgroundColor="White" RowSpacing="2" HeightRequest="60">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="60"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding ImageUrl}"></Image>
+                            <StackLayout Grid.Row="0" Grid.Column="1">
+                                <Label  Text="{Binding Name}" Margin="3" Style="{StaticResource PieTileNameStyle}" LineBreakMode="WordWrap"></Label>
+                            </StackLayout>
+                                <Label Grid.Row="0" Grid.Column="2"  Margin="3" Text="{Binding Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
+                            <StackLayout Grid.Column="1" Grid.Row="1">
+                                <Label  Margin="3" Grid.ColumnSpan="2" Text="{Binding ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.FooterTemplate>
+                <DataTemplate>
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid BackgroundColor="White">
+                            <Image HeightRequest="30" Source="whitewood.jpg" Aspect="Fill"></Image>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
+                            <Label Text="© 2018 Bethany's Pie Shop" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.FooterTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

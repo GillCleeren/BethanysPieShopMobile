@@ -16,7 +16,8 @@ namespace BethanysPieShop.API
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var logger = services.GetService<ILogger>();
+                var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+                var logger = loggerFactory.CreateLogger("Program");
 
                 try
                 {

@@ -7,6 +7,7 @@ namespace BethanysPieShop.API.Models
     {
         public static void Seed(AppDbContext context)
         {
+            context.Database.EnsureCreated();
 
             if (!context.Categories.Any())
             {

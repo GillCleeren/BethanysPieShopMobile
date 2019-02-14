@@ -28,9 +28,9 @@ namespace BethanysPieShop.Mobile.Core.Services.Data
             }
         }
 
-        public void InvalidateCache()
+        public void InvalidateCache<T>()
         {
-            Cache.InvalidateAllObjects<Pie>();
+            Cache.InvalidateAllObjects<T>();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace BethanysPieShop.Mobile.Core.Repository
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(uri);
+                HttpClient httpClient = CreateHttpClient(authToken);
                 string jsonResult = string.Empty;
 
                 var responseMessage = await Policy
@@ -60,7 +60,7 @@ namespace BethanysPieShop.Mobile.Core.Repository
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(uri);
+                HttpClient httpClient = CreateHttpClient(authToken);
 
                 var content = new StringContent(JsonConvert.SerializeObject(data));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -107,7 +107,7 @@ namespace BethanysPieShop.Mobile.Core.Repository
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(uri);
+                HttpClient httpClient = CreateHttpClient(authToken);
 
                 var content = new StringContent(JsonConvert.SerializeObject(data));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -154,7 +154,7 @@ namespace BethanysPieShop.Mobile.Core.Repository
         {
             try
             {
-                HttpClient httpClient = CreateHttpClient(uri);
+                HttpClient httpClient = CreateHttpClient(authToken);
 
                 var content = new StringContent(JsonConvert.SerializeObject(data));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");

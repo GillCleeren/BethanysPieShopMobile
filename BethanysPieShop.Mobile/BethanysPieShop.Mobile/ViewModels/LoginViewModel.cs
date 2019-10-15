@@ -14,7 +14,8 @@ namespace BethanysPieShop.Mobile.Core.ViewModels
         private string _userName;
         private string _password;
 
-        public LoginViewModel(IConnectionService connectionService, ISettingsService settingsService,
+        public LoginViewModel(IConnectionService connectionService, 
+            ISettingsService settingsService,
             INavigationService navigationService, 
             IAuthenticationService authenticationService, 
             IDialogService dialogService) 
@@ -25,6 +26,7 @@ namespace BethanysPieShop.Mobile.Core.ViewModels
         }
 
         public ICommand LoginCommand => new Command(OnLogin);
+
         public ICommand RegisterCommand => new Command(OnRegister);
 
         public string UserName

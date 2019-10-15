@@ -2,13 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BethanysPieShop.Mobile.Core.Views.PieCatalogView"
-             xmlns:utility="clr-namespace:BethanysPieShop.Mobile.Core.Utility;assembly=BethanysPieShop.Mobile.Core"
              xmlns:behaviors="clr-namespace:BethanysPieShop.Mobile.Core.Behaviors;assembly=BethanysPieShop.Mobile.Core"
-             utility:ViewModelLocator.AutoWireViewModel="True"
              BackgroundImage="darktexture.jpg" 
              Title="All Pies"
-             x:Name="PieCatalogViewPage"
-             >
+             x:Name="PieCatalogViewPage">
     <Grid>
         <ListView VerticalOptions="FillAndExpand" Header="{Binding .}" Footer="{Binding .}" ItemsSource="{Binding Pies}" CachingStrategy="RecycleElement"
             SeparatorVisibility="Default"

@@ -8,8 +8,12 @@ namespace BethanysPieShop.Mobile.Core
 {
     public partial class App : Application
     {
+        private readonly IDependencyResolver _dependencyResolver;
+
         public App()
         {
+            _dependencyResolver = AppContainer.Instance;
+
             InitializeComponent();
 
             InitializeApp();
@@ -17,18 +21,16 @@ namespace BethanysPieShop.Mobile.Core
             InitializeNavigation();
         }
 
-        private async Task InitializeNavigation()
-        {
-            var navigationService = AppContainer.Resolve<INavigationService>();
-            await navigationService.InitializeAsync();
-        }
-
         private void InitializeApp()
         {
-            AppContainer.RegisterDependencies();
-
-            var shoppingCartViewModel = AppContainer.Resolve<ShoppingCartViewModel>();
+            var shoppingCartViewModel = _dependencyResolver.Resolve<ShoppingCartViewModel>();
             shoppingCartViewModel.InitializeMessenger();
+        }
+
+        private async Task InitializeNavigation()
+        {
+            var navigationService = _dependencyResolver.Resolve<INavigationService>();
+            await navigationService.InitializeAsync();
         }
 
         protected override void OnStart()

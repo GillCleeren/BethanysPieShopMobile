@@ -4,7 +4,7 @@ using BethanysPieShop.Mobile.Core.ViewModels;
 using BethanysPieShop.Mobile.Core.ViewModels.Base;
 using BethanysPieShop.Mobile.Core.Views;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BethanysPieShop.Mobile.Core.Contracts.Services.Data;
 using Xamarin.Forms;
@@ -14,16 +14,15 @@ namespace BethanysPieShop.Mobile.Core.Services.General
     public class NavigationService : INavigationService
     {
         private readonly IAuthenticationService _authenticationService;
-        private readonly Dictionary<Type, Type> _mappings;
+        private readonly IDependencyResolver _dependencyResolver;
 
         protected Application CurrentApplication => Application.Current;
 
-        public NavigationService(IAuthenticationService authenticationService)
+        public NavigationService(IAuthenticationService authenticationService, 
+            IDependencyResolver dependencyResolver)
         {
             _authenticationService = authenticationService;
-            _mappings = new Dictionary<Type, Type>();
-
-            CreatePageViewModelMappings();
+            _dependencyResolver = dependencyResolver;
         }
 
         public async Task InitializeAsync()
@@ -129,9 +128,7 @@ namespace BethanysPieShop.Mobile.Core.Services.General
             }
             else
             {
-                var navigationPage = CurrentApplication.MainPage as BethanyNavigationPage;
-
-                if (navigationPage != null)
+                if (CurrentApplication.MainPage is BethanyNavigationPage navigationPage)
                 {
                     await navigationPage.PushAsync(page);
                 }
@@ -146,12 +143,16 @@ namespace BethanysPieShop.Mobile.Core.Services.General
 
         protected Type GetPageTypeForViewModel(Type viewModelType)
         {
-            if (!_mappings.ContainsKey(viewModelType))
+            var index = viewModelType.Name.LastIndexOf("Model", StringComparison.Ordinal);
+            var pageTypeName = viewModelType.Name.Remove(index, 5);
+
+            var pageType = viewModelType.Assembly.GetTypes().FirstOrDefault(t => t.Name == pageTypeName);
+            if (pageType == null)
             {
-                throw new KeyNotFoundException($"No map for ${viewModelType} was found on navigation mappings");
+                throw new InvalidOperationException($"No view type found for ${viewModelType}.");
             }
 
-            return _mappings[viewModelType];
+            return pageType;
         }
 
         protected Page CreateAndBindPage(Type viewModelType, object parameter)
@@ -164,25 +165,12 @@ namespace BethanysPieShop.Mobile.Core.Services.General
             }
 
             Page page = Activator.CreateInstance(pageType) as Page;
-            ViewModelBase viewModel = AppContainer.Resolve(viewModelType) as ViewModelBase;
+            ViewModelBase viewModel = _dependencyResolver.Resolve(viewModelType) as ViewModelBase;
             page.BindingContext = viewModel;
 
             return page;
         }
 
-        private void CreatePageViewModelMappings()
-        {
-            
-            _mappings.Add(typeof(LoginViewModel), typeof(LoginView));
-            _mappings.Add(typeof(MainViewModel), typeof(MainView));
-            _mappings.Add(typeof(MenuViewModel), typeof(MenuView));
-            _mappings.Add(typeof(HomeViewModel), typeof(HomeView));
-            _mappings.Add(typeof(CheckoutViewModel), typeof(CheckoutView));
-            _mappings.Add(typeof(ContactViewModel), typeof(ContactView));
-            _mappings.Add(typeof(PieCatalogViewModel), typeof(PieCatalogView));
-            _mappings.Add(typeof(PieDetailViewModel), typeof(PieDetailView));
-            _mappings.Add(typeof(RegistrationViewModel), typeof(RegistrationView));
-            _mappings.Add(typeof(ShoppingCartViewModel), typeof(ShoppingCartView));
-        }
+    
     }
 }

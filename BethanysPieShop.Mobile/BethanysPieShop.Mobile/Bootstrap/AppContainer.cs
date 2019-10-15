@@ -10,11 +10,25 @@ using BethanysPieShop.Mobile.Core.ViewModels;
 
 namespace BethanysPieShop.Mobile.Core.Bootstrap
 {
-    public class AppContainer
+    public interface IDependencyResolver
     {
-        private static IContainer _container;
+        object Resolve(Type typeName);
+        T Resolve<T>();
+    }
 
-        public static void RegisterDependencies()
+    public class AppContainer : IDependencyResolver
+    {
+        private IContainer _container;
+        private static AppContainer _instance;
+
+        public static AppContainer Instance => _instance ?? (_instance = new AppContainer());
+
+        private AppContainer()
+        {
+            RegisterDependencies();
+        }
+
+        private void RegisterDependencies()
         {
             var builder = new ContainerBuilder();
 
@@ -46,16 +60,17 @@ namespace BethanysPieShop.Mobile.Core.Bootstrap
 
             //General
             builder.RegisterType<GenericRepository>().As<IGenericRepository>();
+            builder.Register(c => Instance).As<IDependencyResolver>();
 
             _container = builder.Build();
         }
 
-        public static object Resolve(Type typeName)
+        public object Resolve(Type typeName)
         {
             return _container.Resolve(typeName);
         }
 
-        public static T Resolve<T>()
+        public T Resolve<T>()
         {
             return _container.Resolve<T>();
         }

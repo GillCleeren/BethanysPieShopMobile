@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BethanysPieShop.Mobile.Core
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F0E5954D-ECDF-405B-9EEB-6D2A2FF92217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BethanysPieShop.Mobile.Tests", "BethanysPieShop.Test\BethanysPieShop.Mobile.Tests\BethanysPieShop.Mobile.Tests.csproj", "{FA74DF11-A173-4081-A8FB-8460FF282FD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BethanysPieShop.Mobile.Tests", "BethanysPieShop.Test\BethanysPieShop.Mobile.Tests\BethanysPieShop.Mobile.Tests.csproj", "{FA74DF11-A173-4081-A8FB-8460FF282FD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -237,7 +237,9 @@ Global
 		{902EC937-B35F-438C-8724-3D771244782E}.AppStore|x86.ActiveCfg = Release|x86
 		{902EC937-B35F-438C-8724-3D771244782E}.AppStore|x86.Build.0 = Release|x86
 		{902EC937-B35F-438C-8724-3D771244782E}.AppStore|x86.Deploy.0 = Release|x86
-		{902EC937-B35F-438C-8724-3D771244782E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{902EC937-B35F-438C-8724-3D771244782E}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{902EC937-B35F-438C-8724-3D771244782E}.Debug|Any CPU.Build.0 = Debug|x64
+		{902EC937-B35F-438C-8724-3D771244782E}.Debug|Any CPU.Deploy.0 = Debug|x64
 		{902EC937-B35F-438C-8724-3D771244782E}.Debug|ARM.ActiveCfg = Debug|ARM
 		{902EC937-B35F-438C-8724-3D771244782E}.Debug|ARM.Build.0 = Debug|ARM
 		{902EC937-B35F-438C-8724-3D771244782E}.Debug|ARM.Deploy.0 = Debug|ARM

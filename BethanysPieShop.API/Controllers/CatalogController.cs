@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BethanysPieShop.API.Models;
@@ -25,7 +26,7 @@ namespace BethanysPieShop.API.Controllers
         [Route("[action]")]
         public async Task<IActionResult> Pies([FromQuery]int pageSize = 10, [FromQuery]int pageIndex = 0)
         {
-            var items = await _appDbContext.Pies.OrderBy(p => p.Name).Include(p => p.Category).Skip(pageSize * pageIndex).Take(pageSize)
+            List<Pie> items = await _appDbContext.Pies.OrderBy(p => p.Name).Include(p => p.Category).Skip(pageSize * pageIndex).Take(pageSize)
                 .ToListAsync();
 
             return Ok(items);
@@ -35,7 +36,7 @@ namespace BethanysPieShop.API.Controllers
         [Route("[action]")]
         public async Task<IActionResult> PiesOfTheWeek()
         {
-            var items = await _appDbContext.Pies.Where(p => p.IsPieOfTheWeek).OrderBy(p => p.Name)
+            List<Pie> items = await _appDbContext.Pies.Where(p => p.IsPieOfTheWeek).OrderBy(p => p.Name)
                 .ToListAsync();
 
             return Ok(items);

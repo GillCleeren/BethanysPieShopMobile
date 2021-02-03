@@ -42,7 +42,7 @@ namespace BethanysPieShop.Mobile.Core.Utility
                 {
                     return;
                 }
-                var viewModel = AppContainer.Resolve(viewModelType);
+                var viewModel = AppContainer.Instance.Resolve(viewModelType);
                 view.BindingContext = viewModel;
             }
         }

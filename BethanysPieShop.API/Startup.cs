@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace BethanysPieShop.API
 {
@@ -43,7 +45,7 @@ namespace BethanysPieShop.API
             services.AddSwaggerGen(options =>
             {
                 options.DescribeAllEnumsAsStrings();
-                options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
+                options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "Bethany's Pie Shop - Catalog API",
                     Version = "v1",
@@ -62,7 +64,7 @@ namespace BethanysPieShop.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             //loggerFactory.AddDebug();
@@ -75,13 +77,19 @@ namespace BethanysPieShop.API
 
             //app.UseCors("CorsPolicy");
 
-            app.UseMvcWithDefaultRoute();
+            app.UseRouting();
+            app.UseEndpoints(routeBuilder =>
+            {
+                routeBuilder.MapControllers();
+            });
 
             app.UseSwagger()
                 .UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 });
+
+            app.UseWelcomePage();
         }
     }
 }

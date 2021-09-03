@@ -69,7 +69,8 @@ namespace BethanysPieShop.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bethanys Pie Shop API V1");
+                    c.SwaggerEndpoint("swagger/v1/swagger.json", "Bethanys Pie Shop API V1");
+                    c.RoutePrefix = string.Empty;
                 });
             }
 

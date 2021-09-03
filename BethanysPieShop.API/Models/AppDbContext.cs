@@ -58,7 +58,6 @@ namespace BethanysPieShop.API.Models
             entityTypeBuilder.ToTable("Category");
 
             entityTypeBuilder.Property(c => c.CategoryId)
-                .ForSqlServerUseSequenceHiLo("category_hilo")
                 .IsRequired();
 
             entityTypeBuilder.Property(c => c.CategoryName)

@@ -49,6 +49,7 @@ namespace BethanysPieShop.API
                 options.EnableSensitiveDataLogging();
 #endif
             });
+            services.AddScoped<BethanysPieShopDbInitializer>();
             /*
             services.AddCors(options =>
             {

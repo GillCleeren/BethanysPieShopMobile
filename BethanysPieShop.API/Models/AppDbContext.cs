@@ -19,6 +19,9 @@ namespace BethanysPieShop.API.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Category>()
+                .HasKey(c => c.CategoryId);
+            
             modelBuilder.Entity<Pie>(ConfigurePie);
             modelBuilder.Entity<Category>(ConfigureCategory);
             modelBuilder.Entity<ShoppingCart>(ConfigureShoppingCart);

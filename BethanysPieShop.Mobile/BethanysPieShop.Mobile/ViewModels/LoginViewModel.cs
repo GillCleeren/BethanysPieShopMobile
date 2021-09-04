@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Diagnostics;
+using System.Windows.Input;
 using BethanysPieShop.Mobile.Core.Contracts.Services.Data;
 using BethanysPieShop.Mobile.Core.Contracts.Services.General;
 using BethanysPieShop.Mobile.Core.ViewModels.Base;
@@ -51,27 +53,34 @@ namespace BethanysPieShop.Mobile.Core.ViewModels
 
         private async void OnLogin()
         {
-            IsBusy = true;
-            if (_connectionService.IsConnected)
+            try
             {
-                var authenticationResponse  = await _authenticationService.Authenticate(UserName, Password);
-
-                if (authenticationResponse.IsAuthenticated)
+                IsBusy = true;
+                if (_connectionService.IsConnected)
                 {
-                    // we store the Id to know if the user is already logged in to the application
-                    _settingsService.UserIdSetting = authenticationResponse.User.Id;
-                    _settingsService.UserNameSetting = authenticationResponse.User.FirstName;
+                    var authenticationResponse = await _authenticationService.Authenticate(UserName, Password);
 
-                    IsBusy = false;
-                    await _navigationService.NavigateToAsync<MainViewModel>();
+                    if (authenticationResponse.IsAuthenticated)
+                    {
+                        // we store the Id to know if the user is already logged in to the application
+                        _settingsService.UserIdSetting = authenticationResponse.User.Id;
+                        _settingsService.UserNameSetting = authenticationResponse.User.FirstName;
+
+                        IsBusy = false;
+                        await _navigationService.NavigateToAsync<MainViewModel>();
+                    }
+                }
+                else
+                {
+                    await _dialogService.ShowDialog(
+                        "This username/password combination isn't known",
+                        "Error logging you in",
+                        "OK");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                await _dialogService.ShowDialog(
-                    "This username/password combination isn't known", 
-                    "Error logging you in",
-                    "OK");
+                Debug.WriteLine(ex);
             }
         }
 

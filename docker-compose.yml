@@ -8,6 +8,13 @@ services:
       dockerfile: BethanysPieShop.API/Dockerfile
     depends_on:
       - sqldata
+      - bethanyspieshop.images
 
   sqldata:
     image: mcr.microsoft.com/mssql/server:2019-latest 
+
+  bethanyspieshop.images:
+    image: ${DOCKER_REGISTRY-}bethanyspieshopimages
+    build:
+        context: .
+        dockerfile: BethanysPieShop.Images/Dockerfile

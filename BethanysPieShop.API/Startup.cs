@@ -50,7 +50,7 @@ namespace BethanysPieShop.API
 #endif
             });
             services.AddScoped<BethanysPieShopDbInitializer>();
-            /*
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -58,7 +58,7 @@ namespace BethanysPieShop.API
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials());
-            });*/
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,7 +74,7 @@ namespace BethanysPieShop.API
                 });
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseRouting();
             app.UseEndpoints(routeBuilder =>
             {

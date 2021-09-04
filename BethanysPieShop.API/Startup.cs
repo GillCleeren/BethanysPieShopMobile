@@ -30,7 +30,7 @@ namespace BethanysPieShop.API
                 {
                     Title = "Bethany's Pie Shop - Catalog API",
                     Version = "v1",
-                    Description = "The Catalog HTTP API"
+                    Description = "Bethany's Pie Shop - Catalog API"
                 });
             });
             services.AddDbContext<AppDbContext>(options =>
@@ -70,8 +70,7 @@ namespace BethanysPieShop.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("swagger/v1/swagger.json", "Bethanys Pie Shop API V1");
-                    c.RoutePrefix = string.Empty;
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bethanys Pie Shop API V1");
                 });
             }
 

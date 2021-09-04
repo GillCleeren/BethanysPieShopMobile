@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  bethanyspieshop.api:
+    image: ${DOCKER_REGISTRY-}bethanyspieshopapi
+    build:
+      context: .
+      dockerfile: BethanysPieShop.API/Dockerfile
+    depends_on:
+      - sqldata
+
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2019-latest 

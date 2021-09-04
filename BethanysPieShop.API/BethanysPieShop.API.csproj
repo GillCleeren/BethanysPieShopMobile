@@ -5,6 +5,7 @@
     <StartupObject>BethanysPieShop.API.Program</StartupObject>
     <UserSecretsId>1000c632-9580-47ce-a765-243b2c0a8f91</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>

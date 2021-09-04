@@ -26,14 +26,14 @@ namespace BethanysPieShop.API.Models
             try
             {
                 //if the sql server container is not created on run docker compose this migration can't fail for network related exception.
-                //var retry = Policy.Handle<SqlException>()
-                //    .WaitAndRetry(new TimeSpan[]
-                //    {
-                //        TimeSpan.FromSeconds(3),
-                //        TimeSpan.FromSeconds(5),
-                //        TimeSpan.FromSeconds(8),
-                //    });
-                //retry.Execute(() => _context.Database.Migrate());
+                var retry = Policy.Handle<SqlException>()
+                    .WaitAndRetry(new TimeSpan[]
+                    {
+                        TimeSpan.FromSeconds(3),
+                        TimeSpan.FromSeconds(5),
+                        TimeSpan.FromSeconds(8),
+                    });
+                retry.Execute(() => _context.Database.Migrate());
 
                 _logger.LogInformation("Migrated database associated with AppDbContext");
             }
@@ -78,7 +78,7 @@ namespace BethanysPieShop.API.Models
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while migrating the database used on HumanRelationsContext");
+                _logger.LogError(ex, "An error occurred while migrating the database used on AppDbContext");
             }
 
         }

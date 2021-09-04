@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  bethanyspieshop.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ConnectionString=Data Source=sqldata;Database=BethanysPieShopMobile;User Id=sa;Password=Pass@word
+    ports:
+      - "5000:80"
+      - "5001:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  sqldata:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433" #make db server accessible for host system on port 1433(Server name: localhost)
+    volumes:
+      - bps-sqldata:/var/opt/mssql
+
+volumes:
+  bps-sqldata:
+    external: false

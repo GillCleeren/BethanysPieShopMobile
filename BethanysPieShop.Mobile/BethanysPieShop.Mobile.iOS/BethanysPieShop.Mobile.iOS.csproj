@@ -124,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs">
-      <Version>7.1.0.454</Version>
+      <Version>7.1.0.514</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugins.Messaging">
       <Version>5.2.0</Version>

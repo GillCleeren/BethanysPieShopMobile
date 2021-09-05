@@ -47,7 +47,7 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding Pie.ImageUrl}"></Image>
+                                <Image Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding Pie.ImageUrl, Converter={StaticResource LocalImageNameToUrlConverter}}"></Image>
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding Pie.Name}" Margin="3" Style="{StaticResource PieTileNameStyle}"></Label>
                                 <Label Grid.Row="0" Grid.Column="2"  Margin="3" Text="{Binding Pie.Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
                                 <Label Grid.Column="1" Grid.Row="1" Margin="3" Grid.ColumnSpan="2" Text="{Binding Pie.ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>

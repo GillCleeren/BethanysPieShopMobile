@@ -43,7 +43,7 @@
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                 <ColumnDefinition Width="60"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding ImageUrl}"></Image>
+                            <Image Grid.Row="0" Grid.RowSpan="2" HeightRequest="80" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding ImageUrl, Converter={StaticResource LocalImageNameToUrlConverter}}"></Image>
                             <StackLayout Grid.Row="0" Grid.Column="1">
                                 <Label  Text="{Binding Name}" Margin="3" Style="{StaticResource PieTileNameStyle}" LineBreakMode="WordWrap"></Label>
                             </StackLayout>

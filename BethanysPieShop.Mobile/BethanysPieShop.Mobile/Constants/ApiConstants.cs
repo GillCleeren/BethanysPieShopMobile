@@ -2,6 +2,7 @@
 {
     public class ApiConstants
     {
+        public const string BaseImagesUrl = "http://10.0.2.2:5002/images/";
         public const string BaseApiUrl = "http://10.0.2.2:5000/";
         //public const string BaseApiUrl = "https://bps-pxl.azurewebsites.net/";
         public const string CatalogEndpoint = "api/catalog/pies/"; 

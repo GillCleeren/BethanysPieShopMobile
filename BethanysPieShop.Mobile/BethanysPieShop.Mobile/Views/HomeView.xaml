@@ -46,7 +46,7 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.ColumnSpan="2" Aspect="AspectFill" Source="{Binding ImageUrl}" HeightRequest="100" WidthRequest="100"></Image>
+                                <Image Grid.Row="0" Grid.ColumnSpan="2" Aspect="AspectFill" Source="{Binding ImageUrl, Converter={StaticResource LocalImageNameToUrlConverter}}" HeightRequest="100" WidthRequest="100"></Image>
                                 <Label Grid.Row="1" Grid.Column="0" Text="{Binding Name}" Style="{StaticResource PieTileNameStyle}"></Label>
                                 <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
                                 <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>

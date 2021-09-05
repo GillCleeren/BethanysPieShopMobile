@@ -13,7 +13,7 @@
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image HeightRequest="150" Grid.Row="0" Source="{Binding SelectedPie.ImageUrl}" Aspect="AspectFill" VerticalOptions="StartAndExpand"></Image>
+                <Image HeightRequest="150" Grid.Row="0" Source="{Binding SelectedPie.ImageUrl, Converter={StaticResource LocalImageNameToUrlConverter}}" Aspect="AspectFill" VerticalOptions="StartAndExpand"></Image>
                 <Button Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" Margin="0,0,10,0" Text="Add to cart" 
                         Style="{StaticResource RegularButton}" Command="{Binding AddToCartCommand}"></Button>
                 <Grid Grid.Row="1" Margin="5" BackgroundColor="White" RowSpacing="2">

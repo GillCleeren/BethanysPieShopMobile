@@ -173,6 +173,7 @@
             <converters:MenuIconConverter x:Key="LocalMenuIconConverter"></converters:MenuIconConverter>
             <converters:CurrencyConverter x:Key="LocalCurrencyConverter"></converters:CurrencyConverter>
             <converters:CountToVisibilityConverter x:Key="LocalCountToVisibilityConverter"></converters:CountToVisibilityConverter>
+            <converters:ImageNameToUrlConverter x:Key="LocalImageNameToUrlConverter"></converters:ImageNameToUrlConverter>
         </ResourceDictionary>
 
 		<!-- Application resource dictionary -->

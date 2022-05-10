@@ -13,8 +13,4 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\BethanysPieShop.Mobile\BethanysPieShop.Mobile\BethanysPieShop.Mobile.Core.csproj" />
-  </ItemGroup>
-
 </Project>

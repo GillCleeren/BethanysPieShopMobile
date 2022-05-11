@@ -29,20 +29,52 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
+		<!--<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />-->
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Images\splash.png" Color="#F8F4F1"/>
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\splash.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\bethanylogo.png" />
+	  <None Remove="Resources\Images\bethanylogowithborder.png" />
+	  <None Remove="Resources\Images\carousel1.jpg" />
+	  <None Remove="Resources\Images\carousel2.jpg" />
+	  <None Remove="Resources\Images\carousel3.jpg" />
+	  <None Remove="Resources\Images\darktexture.jpg" />
+	  <None Remove="Resources\Images\header1.jpg" />
+	  <None Remove="Resources\Images\ic_cart.png" />
+	  <None Remove="Resources\Images\ic_contact.png" />
+	  <None Remove="Resources\Images\ic_home.png" />
+	  <None Remove="Resources\Images\ic_logout.png" />
+	  <None Remove="Resources\Images\ic_pies.png" />
+	  <None Remove="Resources\Images\pattern.png" />
+	  <None Remove="Resources\Images\patternwide.png" />
+	  <None Remove="Resources\Images\splash.png" />
+	  <None Remove="Resources\Images\springsale.jpg" />
+	  <None Remove="Resources\Images\whitewood.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Resources\BethanysStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PieDetailView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

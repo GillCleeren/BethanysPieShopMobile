@@ -5,5 +5,6 @@
              x:Class="BethanysPieShop.Client.App">
     <Application.Resources>
         <ResourceDictionary Source="Resources/Styles.xaml" />
+        <ResourceDictionary Source="Resources/BethanysStyles.xaml" />
     </Application.Resources>
 </Application>

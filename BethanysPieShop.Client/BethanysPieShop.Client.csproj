@@ -29,10 +29,11 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<!--<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />-->
+		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\appiconfg.svg" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Images\splash.png" Color="#F8F4F1"/>
+		<MauiSplashScreen Include="Resources\Images\splash.png" Color="#F8F4F1" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -49,6 +50,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\appiconfg.svg" />
 	  <None Remove="Resources\Images\bethanylogo.png" />
 	  <None Remove="Resources\Images\bethanylogowithborder.png" />
 	  <None Remove="Resources\Images\carousel1.jpg" />

@@ -5,19 +5,19 @@
     <OnPlatform x:Key="LargeFontSize"
                         x:TypeArguments="x:Double">
         <On Platform="iOS" Value="20" />
-        <On Platform="Android, UWP, WinRT, WinPhone" Value="18" />
+        <On Platform="Android, UWP, WinRT, WinPhone" Value="19" />
     </OnPlatform>
 
     <OnPlatform x:Key="MediumFontSize"
                         x:TypeArguments="x:Double">
         <On Platform="iOS" Value="18" />
-        <On Platform="Android, UWP, WinRT, WinPhone" Value="16" />
+        <On Platform="Android, UWP, WinRT, WinPhone" Value="17" />
     </OnPlatform>
 
     <OnPlatform x:Key="SmallFontSize"
                         x:TypeArguments="x:Double">
         <On Platform="iOS" Value="14" />
-        <On Platform="Android, UWP, WinRT, WinPhone" Value="11" />
+        <On Platform="Android, UWP, WinRT, WinPhone" Value="12" />
     </OnPlatform>
 
     <OnPlatform x:Key="XSmallFontSize"

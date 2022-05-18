@@ -1,13 +1,12 @@
-﻿using BethanysPieShop.Client.Constants;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace BethanysPieShop.Client.Converters;
 
-public class ImageNameToUrlConverter : IValueConverter
+public class CurrencyConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        return $"{ApiConstants.BaseImagesUrl}{value}";
+        return $"{value:C}"; ;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

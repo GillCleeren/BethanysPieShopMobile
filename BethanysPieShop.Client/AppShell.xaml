@@ -7,8 +7,8 @@
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Hello, World!"
-        ContentTemplate="{DataTemplate views:PieDetailView}"
+        Title="All Pies!"
+        ContentTemplate="{DataTemplate views:PieCatalogView}"
         Route="MainPage" />
 
 </Shell>

@@ -11,7 +11,7 @@
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
-                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Image HeightRequest="150" Grid.Row="0"
                        Source="{Binding SelectedPie.ImageUrl, Converter={StaticResource LocalImageNameToUrlConverter}}"
@@ -36,7 +36,7 @@
                 <Button Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,10,0" 
                         Text="Read description" Style="{StaticResource RegularButton}" Command="{Binding ReadDescriptionCommand}"></Button>
                 <Grid Grid.Row="4">
-                    <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
+                    <Image Source="patternwide.png" HeightRequest="50" Aspect="AspectFill" ></Image>
                     <Label Text="© 2022 Bethany's Pie Shop for Maui" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
                 </Grid>
             </Grid>

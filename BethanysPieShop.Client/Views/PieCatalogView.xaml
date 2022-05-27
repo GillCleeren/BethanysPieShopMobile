@@ -2,20 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BethanysPieShop.Client.Views.PieCatalogView"
-             Title="All Pies">
-    <!--TODO: BackgroundImage Dark Texture-->
-    <RefreshView Command="{Binding LoadPiesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <ListView VerticalOptions="FillAndExpand" Header="{Binding .}"
+             Title="All Pies" BackgroundImageSource="darktexture.jpg">
+    <!--<RefreshView Command="{Binding LoadPiesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">-->
+        <ListView Header="{Binding .}"
                   Footer="{Binding .}" ItemsSource="{Binding Pies}"
-                  CachingStrategy="RecycleElement"
-            SeparatorVisibility="Default"
-            HasUnevenRows="True">
+                  CachingStrategy="RecycleElement" HasUnevenRows="True"
+                  >
             <!--<ListView.Behaviors>
                 <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding PieTappedCommand}" 
                                                   EventArgsConverter="{StaticResource LocalItemTappedConverter}" >
                 </behaviors:EventToCommandBehavior>
             </ListView.Behaviors>-->
-            <!--<ListView.HeaderTemplate>
+            <ListView.HeaderTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -28,11 +26,11 @@
                         </StackLayout>
                     </Grid>
                 </DataTemplate>
-            </ListView.HeaderTemplate>-->
+            </ListView.HeaderTemplate>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Margin="5" BackgroundColor="White" RowSpacing="3" HeightRequest="60">
+                        <Grid Margin="5" BackgroundColor="White" RowSpacing="3" HeightRequest="50">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"></RowDefinition>
                                 <RowDefinition Height="*"></RowDefinition>
@@ -54,23 +52,23 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            <!--<ListView.FooterTemplate>
-                <DataTemplate>
-                    <Grid RowSpacing="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid BackgroundColor="White">
-                            <Image HeightRequest="30" Source="whitewood.jpg" Aspect="Fill"></Image>
-                        </Grid>
-                        <Grid Grid.Row="1">
-                            <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill" ></Image>
-                            <Label Text="© 2022 Bethany's Pie Shop for Maui" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
-                        </Grid>
+            <ListView.FooterTemplate>
+            <DataTemplate>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid BackgroundColor="White" Grid.Row="0">
+                        <Image HeightRequest="30" Source="whitewood.jpg" Aspect="Fill"></Image>
                     </Grid>
-                </DataTemplate>
-            </ListView.FooterTemplate>-->
+                    <Grid Grid.Row="1">
+                        <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill" ></Image>
+                        <Label Text="© 2022 Bethany's Pie Shop for Maui" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </ListView.FooterTemplate>
         </ListView>
-    </RefreshView>
+    <!--</RefreshView>-->
 </ContentPage>

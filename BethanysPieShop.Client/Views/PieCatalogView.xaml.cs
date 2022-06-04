@@ -1,4 +1,5 @@
 using BethanysPieShop.Client.ViewModels;
+using System.Diagnostics;
 
 namespace BethanysPieShop.Client.Views;
 

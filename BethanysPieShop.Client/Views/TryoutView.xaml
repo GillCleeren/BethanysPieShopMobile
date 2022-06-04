@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:vm="clr-namespace:BethanysPieShop.Client.ViewModels"
+             x:Class="BethanysPieShop.Client.Views.TryoutView"
+             Title="TryoutView">
+    <VerticalStackLayout Spacing="20">
+        <Label Text="The EventToCommandBehavior is a behavior that allows the user to invoke an  ICommand through an event. It is designed to associate Commands to events exposed by controls that were not designed to support Commands. It allows you to map any arbitrary event on a control to a Command." />
+
+        <Label Text="This sample demonstrates how to use EventToCommandBehavior. Here we observe Clicked event of the button and trigger IncrementCommand from ViewModel." />
+
+        <Label Text="{Binding ClickCount, StringFormat='{0} clicks'}" />
+
+        <Button Text="Click Me"
+                    TextColor="White"
+                    BackgroundColor="Blue">
+            <Button.Behaviors>
+                <mct:EventToCommandBehavior
+                        EventName="Clicked"
+                        Command="{Binding IncrementCommand}" />
+            </Button.Behaviors>
+        </Button>
+        <ListView ItemsSource="{Binding Pies}">
+            <ListView.Behaviors>
+                <mct:EventToCommandBehavior
+                        EventName="ItemTapped"
+                        Command="{Binding PrintPieCommand}"
+                        CommandParameter="Some Great Pie"
+                    />
+            </ListView.Behaviors>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

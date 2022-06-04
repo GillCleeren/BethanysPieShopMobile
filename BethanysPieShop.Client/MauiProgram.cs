@@ -4,6 +4,7 @@ using BethanysPieShop.Client.Repository;
 using BethanysPieShop.Client.Services.Data;
 using BethanysPieShop.Client.ViewModels;
 using BethanysPieShop.Client.Views;
+using CommunityToolkit.Maui;
 
 namespace BethanysPieShop.Client
 {
@@ -14,6 +15,7 @@ namespace BethanysPieShop.Client
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -30,10 +32,12 @@ namespace BethanysPieShop.Client
             //Views
             services.AddTransient<PieDetailView>();
             services.AddTransient<PieCatalogView>();
+            services.AddTransient<TryoutView>();
             
             //ViewModels
             services.AddTransient<PieCatalogViewModel>();
             services.AddTransient<PieDetailViewModel>();
+            services.AddTransient<TryoutViewModel>();
 
             //services - data
             services.AddTransient<ICatalogDataService, CatalogDataService>();

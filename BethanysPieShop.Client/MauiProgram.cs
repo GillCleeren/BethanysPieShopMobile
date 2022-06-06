@@ -1,7 +1,9 @@
 ﻿using BethanysPieShop.Client.Contracts.Repository;
 using BethanysPieShop.Client.Contracts.Services.Data;
+using BethanysPieShop.Client.Contracts.Services.General;
 using BethanysPieShop.Client.Repository;
 using BethanysPieShop.Client.Services.Data;
+using BethanysPieShop.Client.Services.General;
 using BethanysPieShop.Client.ViewModels;
 using BethanysPieShop.Client.Views;
 using CommunityToolkit.Maui;
@@ -43,7 +45,8 @@ namespace BethanysPieShop.Client
             services.AddTransient<ICatalogDataService, CatalogDataService>();
 
             //services - general
-
+            services.AddTransient<INavigationService, NavigationService>();
+;
             //General
             services.AddSingleton<IGenericRepository, GenericRepository>();
         }

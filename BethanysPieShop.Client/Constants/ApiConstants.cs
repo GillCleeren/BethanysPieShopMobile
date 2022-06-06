@@ -12,8 +12,13 @@ namespace BethanysPieShop.Client.Constants
         public const string BaseImagesUrl = "http://localhost:5002/images/";
         public const string BaseApiUrl = "http://localhost:5000/";
 #else
-        public const string BaseImagesUrl = "http://10.0.2.2:5002/images/";
-        public const string BaseApiUrl = "http://10.0.2.2:5000/";
+        // EMULATOR
+        //public const string BaseImagesUrl = "http://10.0.2.2:5002/images/";
+        //public const string BaseApiUrl = "http://10.0.2.2:5000/";
+
+        // LOCAL API WITH DEVICE
+        public const string BaseImagesUrl = "http://192.168.0.123:5002/images/";
+        public const string BaseApiUrl = "http://192.168.0.123:5000/";
 #endif
 
         //public const string BaseApiUrl = "https://bps-pxl.azurewebsites.net/";

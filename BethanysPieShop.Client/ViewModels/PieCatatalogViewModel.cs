@@ -1,4 +1,6 @@
-﻿using BethanysPieShop.Client.Contracts.Services.Data;
+﻿using BethanysPieShop.Client.Constants;
+using BethanysPieShop.Client.Contracts.Services.Data;
+using BethanysPieShop.Client.Contracts.Services.General;
 using BethanysPieShop.Client.Extensions;
 using BethanysPieShop.Client.Models;
 using BethanysPieShop.Client.ViewModels.Base;
@@ -18,8 +20,8 @@ public class PieCatalogViewModel : ViewModelBase
         Pies = (await _catalogDataService.GetAllPiesAsync()).ToObservableCollection();
     }
 
-    public PieCatalogViewModel(ICatalogDataService catalogDataService)
-        : base()
+    public PieCatalogViewModel(INavigationService navigationService, ICatalogDataService catalogDataService)
+        : base(navigationService)
     {
         _catalogDataService = catalogDataService;
     }
@@ -36,9 +38,12 @@ public class PieCatalogViewModel : ViewModelBase
         }
     }
 
-    private void OnPieTapped(Pie pie)
+    private async void OnPieTapped(Pie pie)
     {
-        Debug.WriteLine($"Tapped {pie}");
-        //_navigationService.NavigateToAsync<PieDetailViewModel>(selectedPie);
+        Debug.WriteLine($"Tapped {pie.Name}");
+        await _navigationService.NavigateRelativeAsync(NavigationConstants.PieDetail, pie);
+        // Alternative solution:
+        // await _navigationService.NavigateAsync(nameof(PieDetailViewModel));
+        // use MessagingCenter to send the pie to PieDetailViewModel
     }
 }

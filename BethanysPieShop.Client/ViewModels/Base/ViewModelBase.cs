@@ -55,10 +55,4 @@ public class ViewModelBase : INotifyPropertyChanged, IQueryAttributable
         // override if you want to pass data into the VM upon navigation
     }
 
-    public virtual Task InitializeAsync(object data)
-    {
-        return Task.FromResult(false);
-    }
-
-    
 }

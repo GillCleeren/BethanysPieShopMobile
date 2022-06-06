@@ -39,11 +39,6 @@ public class PieDetailViewModel : ViewModelBase
         }
     }
 
-    public override async Task InitializeAsync(object data)
-    {
-        SelectedPie = (Pie)data;
-    }
-
     private async void OnAddToCart()
     {
         //MessagingCenter.Send(this, MessagingConstants.AddPieToBasket, SelectedPie);

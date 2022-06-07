@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace BethanysPieShop.Client.ViewModels.Base;
 
-public class ViewModelBase : INotifyPropertyChanged, IQueryAttributable
+public abstract class ViewModelBase : INotifyPropertyChanged, IQueryAttributable
 {
     //protected readonly IConnectionService _connectionService;
     protected readonly INavigationService _navigationService;
@@ -54,5 +54,7 @@ public class ViewModelBase : INotifyPropertyChanged, IQueryAttributable
     {
         // override if you want to pass data into the VM upon navigation
     }
+
+    public abstract void OnAppearing();
 
 }

@@ -32,11 +32,13 @@ namespace BethanysPieShop.Client
         private static void RegisterDependencies(IServiceCollection services)
         {
             //Views
+            services.AddTransient<HomeView>();
             services.AddTransient<PieDetailView>();
             services.AddTransient<PieCatalogView>();
             services.AddTransient<TryoutView>();
-            
+
             //ViewModels
+            services.AddTransient<HomeViewModel>();
             services.AddTransient<PieCatalogViewModel>();
             services.AddTransient<PieDetailViewModel>();
             services.AddTransient<TryoutViewModel>();

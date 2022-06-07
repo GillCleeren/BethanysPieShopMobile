@@ -1,9 +1,9 @@
 ﻿using BethanysPieShop.Client.Constants;
 using BethanysPieShop.Client.Contracts.Services.Data;
 using BethanysPieShop.Client.Contracts.Services.General;
-using BethanysPieShop.Client.Extensions;
 using BethanysPieShop.Client.Models;
 using BethanysPieShop.Client.ViewModels.Base;
+using CommunityToolkit.Maui.Core.Extensions;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Input;
@@ -14,11 +14,6 @@ public class PieCatalogViewModel : ViewModelBase
 {
     private readonly ICatalogDataService _catalogDataService;
     private ObservableCollection<Pie> _pies;
-
-    public async void OnAppearing()
-    {
-        Pies = (await _catalogDataService.GetAllPiesAsync()).ToObservableCollection();
-    }
 
     public PieCatalogViewModel(INavigationService navigationService, ICatalogDataService catalogDataService)
         : base(navigationService)
@@ -36,6 +31,11 @@ public class PieCatalogViewModel : ViewModelBase
             _pies = value;
             OnPropertyChanged();
         }
+    }
+
+    public async override void OnAppearing()
+    {
+        Pies = (await _catalogDataService.GetAllPiesAsync()).ToObservableCollection();
     }
 
     private async void OnPieTapped(Pie pie)

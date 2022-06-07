@@ -38,6 +38,11 @@ namespace BethanysPieShop.Client.ViewModels
         public ICommand IncrementCommand { get; }
         public ICommand PrintPieCommand { get; }
 
+        public override void OnAppearing()
+        {
+            // Nothing to do here
+        }
+
         private void PrintPie(string pie)
         {
             Debug.WriteLine($"Pie: {pie}");

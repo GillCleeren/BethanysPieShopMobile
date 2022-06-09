@@ -1,12 +1,19 @@
-﻿namespace BethanysPieShop.Client
+﻿using BethanysPieShop.Client.ViewModels;
+
+namespace BethanysPieShop.Client
 {
     public partial class App : Application
     {
-        public App()
+        private readonly IServiceProvider Services;
+
+        public App(IServiceProvider services)
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            Services = services;
+
+            var viewModel = Services.GetRequiredService<AppShellViewModel>();
+            MainPage = new AppShell(viewModel);
         }
     }
 }

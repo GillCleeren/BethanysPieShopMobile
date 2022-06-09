@@ -38,6 +38,7 @@ namespace BethanysPieShop.Client
             services.AddTransient<TryoutView>();
 
             //ViewModels
+            services.AddTransient<AppShellViewModel>();
             services.AddTransient<HomeViewModel>();
             services.AddTransient<PieCatalogViewModel>();
             services.AddTransient<PieDetailViewModel>();

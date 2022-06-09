@@ -17,9 +17,9 @@ namespace BethanysPieShop.Client.Constants
         public const string BaseApiUrl = "http://10.0.2.2:5000/";
 
         // LOCAL API WITH DEVICE
-        //public const string BaseImagesUrl = "http://192.168.0.123:5002/images/";
-        //public const string BaseApiUrl = "http://192.168.0.123:5000/";
-#endif
+        // public const string BaseImagesUrl = "http://192.168.0.124:5002/images/";
+        // public const string BaseApiUrl = "http://192.168.0.124:5000/";
+ #endif
 
         //public const string BaseApiUrl = "https://bps-pxl.azurewebsites.net/";
         public const string CatalogEndpoint = "api/catalog/pies/";

@@ -4,11 +4,67 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:BethanysPieShop.Client.Views"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout">
 
-    <ShellContent
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Black" HeightRequest="150">
+                <Image Aspect="AspectFill"
+                       Source="carousel1.jpg"
+                       Opacity="0.3" />
+                <Label Text="{Binding Greeting}"
+                       Style="{StaticResource MenuLabelStyle}"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="End" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.2*,0.8*">
+                <Image Source="{Binding FlyoutIcon}"
+                           Margin="5"
+                           HeightRequest="40" />
+                <Label Grid.Column="1"
+                           Text="{Binding Title}"
+                           FontSize="Medium"
+                           VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <!--<ShellContent
         Title="All Pies!"
         ContentTemplate="{DataTemplate views:HomeView}"
-        Route="MainPage" />
-
+        Route="MainPage" />-->
+    <FlyoutItem Title="Home" Icon="ic_home.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:HomeView}"
+                          Route="HomeView"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Pies" Icon="ic_pies.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:PieCatalogView}"
+                          Route="PieCatalogView"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Cart" Icon="ic_cart.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:TryoutView}"
+                          Route="CartView"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Contact Us" Icon="ic_contact.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:TryoutView}"
+                          Route="ContactView"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Log out" Icon="ic_logout.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:TryoutView}"
+                          Route="LogOutView"/>
+        </Tab>
+    </FlyoutItem>
 </Shell>

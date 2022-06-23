@@ -38,7 +38,6 @@ public class CatalogDataService : ICatalogDataService
         };
 
         var pies = await _genericRepository.GetAsync<List<Pie>>(builder.ToString());
-
         return pies;
     }
 }

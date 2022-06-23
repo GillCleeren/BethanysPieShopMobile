@@ -7,8 +7,8 @@
     <Application.Resources>
         <!--<ResourceDictionary Source="Resources/Styles.xaml" />-->
         <ResourceDictionary Source="Resources/BethanysStyles.xaml" />
-        <!--<converters:ItemTappedConverter x:Key="LocalItemTappedConverter"></converters:ItemTappedConverter>-->
-        <converters:CurrencyConverter x:Key="LocalCurrencyConverter"></converters:CurrencyConverter>
-        <converters:ImageNameToUrlConverter x:Key="LocalImageNameToUrlConverter"></converters:ImageNameToUrlConverter>
+        <converters:CurrencyConverter x:Key="LocalCurrencyConverter" />
+        <converters:ImageNameToUrlConverter x:Key="LocalImageNameToUrlConverter" />
+        <converters:BoolToFlyoutBehaviorConverter x:Key="BoolToFlyoutBehavior" />
     </Application.Resources>
 </Application>

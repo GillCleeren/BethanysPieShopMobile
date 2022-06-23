@@ -33,6 +33,7 @@ namespace BethanysPieShop.Client
         {
             //Views
             services.AddTransient<HomeView>();
+            services.AddTransient<LoginView>();
             services.AddTransient<PieDetailView>();
             services.AddTransient<PieCatalogView>();
             services.AddTransient<TryoutView>();
@@ -40,15 +41,18 @@ namespace BethanysPieShop.Client
             //ViewModels
             services.AddTransient<AppShellViewModel>();
             services.AddTransient<HomeViewModel>();
+            services.AddTransient<LoginViewModel>();
             services.AddTransient<PieCatalogViewModel>();
             services.AddTransient<PieDetailViewModel>();
             services.AddTransient<TryoutViewModel>();
 
             //services - data
             services.AddTransient<ICatalogDataService, CatalogDataService>();
+            services.AddTransient<IAuthenticationService, AuthenticationService>();
 
             //services - general
             services.AddTransient<INavigationService, NavigationService>();
+            services.AddTransient<ISettingsService, SettingsService>();
 ;
             //General
             services.AddSingleton<IGenericRepository, GenericRepository>();

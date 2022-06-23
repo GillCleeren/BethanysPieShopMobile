@@ -15,6 +15,8 @@ namespace BethanysPieShop.Client
             _viewModel = viewModel;
             BindingContext = _viewModel;
 
+            Routing.RegisterRoute(NavigationConstants.Login, typeof(LoginView));
+            Routing.RegisterRoute(NavigationConstants.Home, typeof(HomeView));
             Routing.RegisterRoute(NavigationConstants.PieDetail, typeof(PieDetailView));
         }
 

@@ -1,19 +1,17 @@
-﻿using BethanysPieShop.Client.Contracts.Services.General;
+﻿using BethanysPieShop.Client.Constants;
+using BethanysPieShop.Client.Contracts.Services.Data;
+using BethanysPieShop.Client.Contracts.Services.General;
 using BethanysPieShop.Client.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BethanysPieShop.Client.ViewModels;
 
 public class AppShellViewModel : ViewModelBase
 {
-    public AppShellViewModel(INavigationService navigationService)
+    private readonly IAuthenticationService _authenticationService;
+    public AppShellViewModel(INavigationService navigationService, IAuthenticationService authenticationService)
         : base(navigationService)
     {
-
+        _authenticationService = authenticationService;
     }
 
     private string _greeting;
@@ -24,9 +22,18 @@ public class AppShellViewModel : ViewModelBase
         set { _greeting = value; OnPropertyChanged(); }
     }
 
+    public bool IsAuthenticated => _authenticationService.IsUserAuthenticated();
 
-    public override void OnAppearing()
+
+    public override async void OnAppearing()
     {
         Greeting = "Well, hello there!";
+        if (!IsAuthenticated)
+        {
+            await _navigationService.NavigateAsync(NavigationConstants.Login);
+        }
     }
+
+    // ToDo: Subscribe to message Authentication Succes and update Greeting
+    // ToDo: Make IsAuthenticated a property that you can raise => update UI
 }

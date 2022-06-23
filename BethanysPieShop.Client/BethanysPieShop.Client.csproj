@@ -77,6 +77,9 @@
 	  <MauiXaml Update="Views\HomeView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PieCatalogView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

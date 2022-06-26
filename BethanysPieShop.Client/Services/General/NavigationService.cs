@@ -1,9 +1,4 @@
 ﻿using BethanysPieShop.Client.Contracts.Services.General;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BethanysPieShop.Client.Services.General
 {
@@ -20,7 +15,6 @@ namespace BethanysPieShop.Client.Services.General
             {
                 { "DATA", parameter }
             };
-
             await Shell.Current.GoToAsync($"{routeName}", navigationParameter);
         }
     }

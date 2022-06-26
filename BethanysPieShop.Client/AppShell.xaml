@@ -33,15 +33,14 @@
         </DataTemplate>
     </Shell.ItemTemplate>
 
-    <!--<ShellContent
-        Title="All Pies!"
-        ContentTemplate="{DataTemplate views:HomeView}"
-        Route="MainPage" />-->
+    <ShellItem FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate views:LoginView}"
+                          Route="LoginView" />
+    </ShellItem>
+
     <FlyoutItem Title="Home" Icon="ic_home.png">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:HomeView}"
-                          Route="HomeView"/>
-        </Tab>
+        <ShellContent ContentTemplate="{DataTemplate views:HomeView}"
+                      Route="HomeView" />
     </FlyoutItem>
     <FlyoutItem Title="Pies" Icon="ic_pies.png">
         <Tab>
@@ -65,13 +64,6 @@
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate views:TryoutView}"
                           Route="LogOutView"/>
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem>
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:LoginView}"
-                          Route="LoginView"
-                          FlyoutItemIsVisible="False"/>
         </Tab>
     </FlyoutItem>
 </Shell>

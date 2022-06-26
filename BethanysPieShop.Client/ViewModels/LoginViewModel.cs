@@ -2,12 +2,7 @@
 using BethanysPieShop.Client.Contracts.Services.Data;
 using BethanysPieShop.Client.Contracts.Services.General;
 using BethanysPieShop.Client.ViewModels.Base;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace BethanysPieShop.Client.ViewModels;
@@ -72,7 +67,7 @@ public class LoginViewModel : ViewModelBase
                 _settingsService.UserNameSetting = authenticationResponse.User.FirstName;
 
                 IsBusy = false;
-                // ToDo: Send message to AppShellViewModel => Authentication Success
+                MessagingCenter.Send(this, MessagingConstants.LoginSucceeded);
                 await _navigationService.NavigateAsync(NavigationConstants.Home);
             }
             else

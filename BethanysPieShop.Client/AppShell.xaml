@@ -32,10 +32,23 @@
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>
-
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="0.2*,0.8*">
+                <Image Source="{Binding Icon}"
+                       Margin="5"
+                       HeightRequest="40" />
+                <Label Grid.Column="1"
+                       Text="{Binding Text}"
+                       FontSize="Medium"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+    
     <ShellItem FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate views:LoginView}"
-                          Route="LoginView" />
+                      Route="LoginView" />
     </ShellItem>
 
     <FlyoutItem Title="Home" Icon="ic_home.png">
@@ -60,10 +73,7 @@
                           Route="ContactView"/>
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Log out" Icon="ic_logout.png">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:TryoutView}"
-                          Route="LogOutView"/>
-        </Tab>
-    </FlyoutItem>
+    <MenuItem Text="Log out"
+              IconImageSource="ic_logout.png"
+              Command="{Binding LogoutCommand}" />
 </Shell>

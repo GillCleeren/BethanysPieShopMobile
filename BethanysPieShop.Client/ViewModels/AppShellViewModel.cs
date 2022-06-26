@@ -10,6 +10,7 @@ public class AppShellViewModel : ViewModelBase
     private string _greeting;
     private bool _isAuthenticated;
 
+<<<<<<< HEAD
     //private readonly IAuthenticationService _authenticationService;
     private readonly ISettingsService _settingsService;
 
@@ -17,6 +18,14 @@ public class AppShellViewModel : ViewModelBase
         : base(navigationService)
     {
         _settingsService = settingsService;
+=======
+    private readonly IAuthenticationService _authenticationService;
+   
+    public AppShellViewModel(INavigationService navigationService, IAuthenticationService authenticationService)
+        : base(navigationService)
+    {
+        _authenticationService = authenticationService;
+>>>>>>> 5b74a9c6ade73fe371ecde49ec28bb1d46afffe5
 
         MessagingCenter.Subscribe<LoginViewModel>(this, MessagingConstants.LoginSucceeded, (loginViewModel) => OnLoginSucceeded());
     }
@@ -52,7 +61,16 @@ public class AppShellViewModel : ViewModelBase
 
     private void OnLoginSucceeded()
     {
+<<<<<<< HEAD
         IsAuthenticated = !string.IsNullOrEmpty(_settingsService.UserIdSetting);
         Greeting = $"Hello, {_settingsService.UserNameSetting}!";
     }
+=======
+        IsAuthenticated = _authenticationService.IsUserAuthenticated();
+        Greeting = "Yo!";
+    }
+
+    // ToDo: Subscribe to message Authentication Succes and update Greeting
+    // ToDo: Make IsAuthenticated a property that you can raise => update UI
+>>>>>>> 5b74a9c6ade73fe371ecde49ec28bb1d46afffe5
 }

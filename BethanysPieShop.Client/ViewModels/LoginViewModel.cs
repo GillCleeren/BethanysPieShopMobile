@@ -50,7 +50,9 @@ public class LoginViewModel : ViewModelBase
 
     public override void OnAppearing()
     {
-        // Nothing to do
+        // Clear previous user input
+        UserName = String.Empty;
+        Password = String.Empty;
     }
 
     private async void OnLogin()

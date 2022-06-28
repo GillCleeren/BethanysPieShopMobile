@@ -2,14 +2,17 @@
 using BethanysPieShop.API.Models;
 using BethanysPieShop.API.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BethanysPieShop.API.Controllers
 {
     [Route("api/[controller]")]
     public class AuthenticationController : Controller
     {
-        public AuthenticationController()
+        private readonly ILogger<AuthenticationController> _logger;
+        public AuthenticationController(ILogger<AuthenticationController> logger)
         {
+            _logger = logger;
         }
 
         [HttpPost]
@@ -17,12 +20,12 @@ namespace BethanysPieShop.API.Controllers
         //public IActionResult Authenticate(string userName, string password)
         public IActionResult Authenticate([FromBody] AuthenticationRequest authenticationRequest)
         {
-            Console.WriteLine($"authenticationRequest = {authenticationRequest}");
+            _logger.LogInformation($"authenticationRequest = {authenticationRequest}");
             
             var userName = authenticationRequest.UserName;
 
-            Console.WriteLine($"userName = {authenticationRequest.UserName}");
-            Console.WriteLine($"password = {authenticationRequest.Password}");
+            _logger.LogInformation($"userName = {authenticationRequest.UserName}");
+            _logger.LogInformation($"password = {authenticationRequest.Password}");
             if (userName.ToLower() == "joe")
             {
                 return Ok(new AuthenticationResponse

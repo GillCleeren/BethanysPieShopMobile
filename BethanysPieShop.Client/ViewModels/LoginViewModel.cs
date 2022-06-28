@@ -18,9 +18,10 @@ public class LoginViewModel : ViewModelBase
     public LoginViewModel(
         ISettingsService settingsService,
         INavigationService navigationService,
-        IAuthenticationService authenticationService
+        IAuthenticationService authenticationService,
+        IDialogService dialogService
         )
-        : base(navigationService)
+        : base(navigationService, dialogService)
     {
         _authenticationService = authenticationService;
         _settingsService = settingsService;
@@ -62,7 +63,7 @@ public class LoginViewModel : ViewModelBase
             IsBusy = true;
             var authenticationResponse = await _authenticationService.Authenticate(UserName, Password);
 
-            if (authenticationResponse.IsAuthenticated)
+            if (authenticationResponse.IsAuthenticated) 
             {
                 // we store the Id to know if the user is already logged in to the application
                 _settingsService.UserIdSetting = authenticationResponse.User.Id;
@@ -74,11 +75,10 @@ public class LoginViewModel : ViewModelBase
             }
             else
             {
-                //TODO: popup dialog
-                //await _dialogService.ShowDialog(
-                //        "This username/password combination isn't known",
-                //        "Error logging you in",
-                //        "OK");
+                await _dialogService.ShowDialog(
+                        "This username/password combination isn't known",
+                        "Error logging you in",
+                        "OK");
                 Debug.WriteLine("This username/password combination isn't known");
             }
         }

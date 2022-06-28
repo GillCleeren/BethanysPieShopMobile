@@ -13,8 +13,8 @@ public class AppShellViewModel : ViewModelBase
 
     private readonly ISettingsService _settingsService;
 
-    public AppShellViewModel(INavigationService navigationService, ISettingsService settingsService)
-        : base(navigationService)
+    public AppShellViewModel(INavigationService navigationService, ISettingsService settingsService, IDialogService dialogService)
+        : base(navigationService, dialogService)
     {
         _settingsService = settingsService;
         MessagingCenter.Subscribe<LoginViewModel>(this, MessagingConstants.LoginSucceeded, (loginViewModel) => OnLoginSucceeded());

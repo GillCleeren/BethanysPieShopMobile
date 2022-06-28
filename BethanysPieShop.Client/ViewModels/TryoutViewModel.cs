@@ -9,8 +9,8 @@ namespace BethanysPieShop.Client.ViewModels
     {
         int clickCount;
 
-        public TryoutViewModel(INavigationService navigationService)
-            :base(navigationService)
+        public TryoutViewModel(INavigationService navigationService, IDialogService dialogService)
+            :base(navigationService, dialogService)
         {
             IncrementCommand = new Command(() => ClickCount++);
             PrintPieCommand = new Command<string>(pie => PrintPie(pie));

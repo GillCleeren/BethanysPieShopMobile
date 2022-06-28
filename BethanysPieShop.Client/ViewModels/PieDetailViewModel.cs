@@ -9,13 +9,8 @@ public class PieDetailViewModel : ViewModelBase
 {
     private Pie _selectedPie;
 
-    //public PieDetailViewModel(IConnectionService connectionService,
-    //    INavigationService navigationService, IDialogService dialogService)
-    //    : base(connectionService, navigationService, dialogService)
-    //{ }
-
-    public PieDetailViewModel(INavigationService navigationService)
-        :base(navigationService)
+    public PieDetailViewModel(INavigationService navigationService, IDialogService dialogService)
+        :base(navigationService, dialogService)
     {
         
     }

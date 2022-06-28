@@ -60,24 +60,25 @@ public class GenericRepository : IGenericRepository
         {
             HttpClient httpClient = CreateHttpClient(uri);
 
-            var content = new StringContent(JsonConvert.SerializeObject(data));
+            var jsonString = JsonConvert.SerializeObject(data);
+            var content = new StringContent(jsonString);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             string jsonResult = string.Empty;
 
-            var responseMessage = await Policy
-                .Handle<WebException>(ex =>
-                {
-                    Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
-                    return true;
-                })
-                .WaitAndRetryAsync
-                (
-                    5,
-                    retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
-                )
-                .ExecuteAsync(async () => await httpClient.PostAsync(uri, content));
-
+            //var responseMessage = await Policy
+            //    .Handle<WebException>(ex =>
+            //    {
+            //        Debug.WriteLine($"{ex.GetType().Name + " : " + ex.Message}");
+            //        return true;
+            //    })
+            //    .WaitAndRetryAsync
+            //    (
+            //        5,
+            //        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+            //    )
+            //    .ExecuteAsync(async () => await httpClient.PostAsync(uri, content));
+            var responseMessage = await httpClient.PostAsync(uri, content);
             if (responseMessage.IsSuccessStatusCode)
             {
                 jsonResult = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -107,11 +108,15 @@ public class GenericRepository : IGenericRepository
         {
             HttpClient httpClient = CreateHttpClient(uri);
 
-            var content = new StringContent(JsonConvert.SerializeObject(data));
+            var jsonString = JsonConvert.SerializeObject(data);
+            var content = new StringContent(jsonString);
+
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             string jsonResult = string.Empty;
             var responseMessage = await httpClient.PostAsync(uri, content);
+            
+            
             //var responseMessage = await Policy
             //    .Handle<WebException>(ex =>
             //    {

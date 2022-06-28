@@ -14,8 +14,30 @@ namespace BethanysPieShop.API.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public IActionResult Authenticate(string userName, string password)
+        //public IActionResult Authenticate(string userName, string password)
+        public IActionResult Authenticate([FromBody] AuthenticationRequest authenticationRequest)
         {
+            Console.WriteLine($"authenticationRequest = {authenticationRequest}");
+            
+            var userName = authenticationRequest.UserName;
+
+            Console.WriteLine($"userName = {authenticationRequest.UserName}");
+            Console.WriteLine($"password = {authenticationRequest.Password}");
+            if (userName.ToLower() == "joe")
+            {
+                return Ok(new AuthenticationResponse
+                {
+                    IsAuthenticated = false,
+                    User = new User()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        UserName = userName,
+                        FirstName = "Dummy",
+                        LastName = "Dummy",
+                        Email = "test@something.com"
+                    }
+                });
+            }
             return Ok(new AuthenticationResponse
             {
                 IsAuthenticated = true,

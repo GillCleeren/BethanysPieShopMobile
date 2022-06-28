@@ -53,6 +53,7 @@ namespace BethanysPieShop.Client
             //services - general
             services.AddTransient<INavigationService, NavigationService>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IDialogService, DialogService>();
 ;
             //General
             services.AddSingleton<IGenericRepository, GenericRepository>();

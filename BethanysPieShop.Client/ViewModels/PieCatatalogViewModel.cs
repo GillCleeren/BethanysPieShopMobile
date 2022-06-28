@@ -15,8 +15,8 @@ public class PieCatalogViewModel : ViewModelBase
     private readonly ICatalogDataService _catalogDataService;
     private ObservableCollection<Pie> _pies;
 
-    public PieCatalogViewModel(INavigationService navigationService, ICatalogDataService catalogDataService)
-        : base(navigationService)
+    public PieCatalogViewModel(INavigationService navigationService, ICatalogDataService catalogDataService, IDialogService dialogService)
+        : base(navigationService, dialogService)
     {
         _catalogDataService = catalogDataService;
     }

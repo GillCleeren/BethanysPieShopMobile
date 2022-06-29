@@ -1,4 +1,6 @@
 ﻿using BethanysPieShop.Client.Contracts.Services.General;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
 
 namespace BethanysPieShop.Client.Services.General;
 
@@ -11,6 +13,14 @@ public class DialogService : IDialogService
 
     public Task ShowToast(string message)
     {
-        throw new NotImplementedException();
+        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+
+        string text = message;
+        ToastDuration duration = ToastDuration.Long;
+        double fontSize = 14;
+
+        var toast = Toast.Make(text, duration, fontSize);
+
+        return toast.Show(cancellationTokenSource.Token);
     }
 }

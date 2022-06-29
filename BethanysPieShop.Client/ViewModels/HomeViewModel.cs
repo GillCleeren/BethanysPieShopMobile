@@ -50,6 +50,7 @@ public class HomeViewModel : ViewModelBase
     private async void OnAddToCart(Pie selectedPie)
     {
         MessagingCenter.Send(this, MessagingConstants.AddPieToBasket, selectedPie);
-        await _dialogService.ShowDialog("Pie added to your cart", "Success", "OK");
+        //await _dialogService.ShowDialog("Pie added to your cart", "Success", "OK");
+        await _dialogService.ShowToast($"{selectedPie.Name} added to your cart");
     }
 }

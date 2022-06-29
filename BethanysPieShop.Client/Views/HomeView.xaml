@@ -9,7 +9,7 @@
             <toolkit:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid>
+    <Grid x:Name="LayoutRootGrid">
         <ListView VerticalOptions="FillAndExpand" Header="{Binding .}"
                   Footer="{Binding .}" ItemsSource="{Binding PiesOfTheWeek}"
                   CachingStrategy="RecycleElement"
@@ -54,7 +54,9 @@
                                 <Label Grid.Row="1" Grid.Column="0" Text="{Binding Name}" Style="{StaticResource PieTileNameStyle}"></Label>
                                 <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
                                 <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>
-                                <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="Add to cart" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference HomeViewPage}, Path=BindingContext.AddToCartCommand}" CommandParameter="{Binding}"></Button>
+                                <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="Add to cart" Style="{StaticResource RegularButton}"
+                                        Command="{Binding Source={x:Reference LayoutRootGrid}, Path=BindingContext.AddToCartCommand}"
+                                        CommandParameter="{Binding}" />
                             </Grid>
                         </Frame>
                     </ViewCell>

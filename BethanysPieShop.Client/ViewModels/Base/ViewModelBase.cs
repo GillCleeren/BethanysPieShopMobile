@@ -49,5 +49,8 @@ public abstract class ViewModelBase : INotifyPropertyChanged, IQueryAttributable
         // override if you want to pass data into the VM upon navigation
     }
 
-    public abstract void OnAppearing();
+    public virtual void OnAppearing()
+    {
+        // override if you want to initialize some data in the ViewModel, e.g. load a list
+    }
 }

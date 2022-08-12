@@ -86,6 +86,9 @@
 	  <MauiXaml Update="Views\PieDetailView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ShoppingCartView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\TryoutView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

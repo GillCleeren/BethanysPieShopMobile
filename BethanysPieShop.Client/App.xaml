@@ -9,6 +9,7 @@
         <ResourceDictionary Source="Resources/BethanysStyles.xaml" />
         <converters:CurrencyConverter x:Key="LocalCurrencyConverter" />
         <converters:ImageNameToUrlConverter x:Key="LocalImageNameToUrlConverter" />
+        <converters:CountToVisibilityConverter x:Key="LocalCountToVisibilityConverter" />
         <converters:BoolToFlyoutBehaviorConverter x:Key="BoolToFlyoutBehavior" />
     </Application.Resources>
 </Application>

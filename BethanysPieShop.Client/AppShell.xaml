@@ -63,7 +63,7 @@
     </FlyoutItem>
     <FlyoutItem Title="Cart" Icon="ic_cart.png">
         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:TryoutView}"
+            <ShellContent ContentTemplate="{DataTemplate views:ShoppingCartView}"
                           Route="CartView"/>
         </Tab>
     </FlyoutItem>

@@ -6,5 +6,6 @@
         public const string PieDetail = "PieDetailView";
         public const string Home = "HomeView";
         public const string Login = "LoginView";
+        public const string ShoppingCart = "ShoppingCartView";
     }
 }

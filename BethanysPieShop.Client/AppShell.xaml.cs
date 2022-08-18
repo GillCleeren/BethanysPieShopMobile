@@ -7,7 +7,6 @@ namespace BethanysPieShop.Client
     public partial class AppShell : Shell
     {
         private readonly AppShellViewModel _viewModel;
-        
         public AppShell(AppShellViewModel viewModel)
         {
             InitializeComponent();

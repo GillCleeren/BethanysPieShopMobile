@@ -28,6 +28,8 @@ public class ShoppingCartViewModel : ViewModelBase
         _settingsService = settingsService;
         _shoppingCartItems = new ObservableCollection<ShoppingCartItem>();
         _orderTotal = 0;
+
+        InitializeMessenger();
     }
 
     public ICommand CheckOutCommand => new Command(OnCheckOut);
@@ -82,10 +84,11 @@ public class ShoppingCartViewModel : ViewModelBase
         //MessagingCenter.Subscribe<CheckoutViewModel>(this, "OrderPlaced", model => OnOrderPlaced());
     }
 
-    private void OnCheckOut()
+    private async void OnCheckOut()
     {
         //_navigationService.NavigateToAsync<CheckoutViewModel>();
-        //TODO: doe hier gewoon iets met een Dialog, hier stopt de demo
+        await _dialogService.ShowDialog("Demo ends here, shopping basket gets emptied now!", "Checkout", "OK");
+        OnOrderPlaced();
     }
 
     private void OnOrderPlaced()
@@ -120,7 +123,6 @@ public class ShoppingCartViewModel : ViewModelBase
         //{
         //    ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
         //}
-        InitializeMessenger();
     }
 
     private void OnAddPieToBasketReceived(Pie pie)

@@ -14,6 +14,10 @@ namespace BethanysPieShop.Client
             _viewModel = viewModel;
             BindingContext = _viewModel;
 
+            // Manual resolving
+            //BindingContext = this.Handler.MauiContext
+            //    .Services.GetServices<AppShellViewModel>();
+
             Routing.RegisterRoute(NavigationConstants.Login, typeof(LoginView));
             Routing.RegisterRoute(NavigationConstants.Home, typeof(HomeView));
             Routing.RegisterRoute(NavigationConstants.PieDetail, typeof(PieDetailView));

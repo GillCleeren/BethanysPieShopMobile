@@ -21,7 +21,9 @@ namespace BethanysPieShop.API.Controllers
         [Route("{userId}")]
         public IActionResult GetItemsForUser(string userId)
         {
-            var shoppingCart = _appDbContext.ShoppingCarts.Include(s => s.ShoppingCartItems).ThenInclude(s => s.Pie).FirstOrDefault(s => s.UserId == userId);
+            var shoppingCart = _appDbContext.ShoppingCarts.Include(s => s.ShoppingCartItems)
+                                                          .ThenInclude(s => s.Pie)
+                                                          .FirstOrDefault(s => s.UserId == userId);
             return shoppingCart == null ? Ok(new ShoppingCart()) : Ok(shoppingCart);
         }
 

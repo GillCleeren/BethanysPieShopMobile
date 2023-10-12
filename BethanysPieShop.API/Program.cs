@@ -13,24 +13,7 @@ namespace BethanysPieShop.API
         public static void Main(string[] args)
         {
             IHost host = CreateHostBuilder(args).Build();
-
-            using (var scope = host.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-                var logger = loggerFactory.CreateLogger("Program");
-
-                try
-                {
-                    var context = services.GetRequiredService<AppDbContext>();
-                    DbInitializer.Seed(context);
-                }
-                catch (Exception ex)
-                {
-                    logger.LogError(ex.Message);
-                }
-            }
-
+            InitializeInfrastructure(host);
             host.Run();
         }
 
@@ -40,5 +23,14 @@ namespace BethanysPieShop.API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        private static void InitializeInfrastructure(IHost host)
+        {
+            using var scope = host.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            var initializer = services.GetRequiredService<BethanysPieShopDbInitializer>();
+            initializer.MigrateDatabase();
+            initializer.SeedDatabase();
+        }
     }
 }

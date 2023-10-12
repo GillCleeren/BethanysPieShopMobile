@@ -1,0 +1,15 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BethanysPieShop.Client"
+             xmlns:converters="clr-namespace:BethanysPieShop.Client.Converters"
+             x:Class="BethanysPieShop.Client.App">
+    <Application.Resources>
+        <!--<ResourceDictionary Source="Resources/Styles.xaml" />-->
+        <ResourceDictionary Source="Resources/BethanysStyles.xaml" />
+        <converters:CurrencyConverter x:Key="LocalCurrencyConverter" />
+        <converters:ImageNameToUrlConverter x:Key="LocalImageNameToUrlConverter" />
+        <converters:CountToVisibilityConverter x:Key="LocalCountToVisibilityConverter" />
+        <converters:BoolToFlyoutBehaviorConverter x:Key="BoolToFlyoutBehavior" />
+    </Application.Resources>
+</Application>

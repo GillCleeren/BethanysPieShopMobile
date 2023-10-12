@@ -19,6 +19,9 @@ namespace BethanysPieShop.API.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Category>()
+                .HasKey(c => c.CategoryId);
+            
             modelBuilder.Entity<Pie>(ConfigurePie);
             modelBuilder.Entity<Category>(ConfigureCategory);
             modelBuilder.Entity<ShoppingCart>(ConfigureShoppingCart);
@@ -58,7 +61,6 @@ namespace BethanysPieShop.API.Models
             entityTypeBuilder.ToTable("Category");
 
             entityTypeBuilder.Property(c => c.CategoryId)
-                .ForSqlServerUseSequenceHiLo("category_hilo")
                 .IsRequired();
 
             entityTypeBuilder.Property(c => c.CategoryName)

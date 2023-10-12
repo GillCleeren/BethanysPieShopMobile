@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BethanysPieShop.Client.Views.LoginView"
+             BackgroundColor="{StaticResource BethanyPurple}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" HeightRequest="300" WidthRequest="200" Grid.Row="1" Grid.Column="1">
+            <Frame BorderColor="White" CornerRadius="10" Margin="0, 15, 0, 15" HasShadow="True">
+                <StackLayout Margin="0, 30">
+                    <Label Text="Sign in" Style="{StaticResource PageHeaderStyle}"></Label>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Not a member? " Style="{StaticResource RegularStyle}"></Label>
+                        <Label Text="Register today!" Style="{StaticResource LinkStyle}">
+                            <!--<Label.GestureRecognizers>
+                                <TapGestureRecognizer            
+                                        Command="{Binding RegisterCommand}"  
+                                        NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>-->
+                        </Label>
+                    </StackLayout>
+                    <Entry Placeholder="User name" WidthRequest="170" Text="{Binding UserName, Mode=TwoWay}"/>
+                    <Entry IsPassword="True" Placeholder="Password" WidthRequest="170" Text="{Binding Password, Mode=TwoWay}"/>
+                    <Button Style="{StaticResource RegularButton}" Text="Sign in" Command="{Binding LoginCommand}" HeightRequest="40"></Button>
+                </StackLayout>
+            </Frame>
+            <Frame  AbsoluteLayout.LayoutFlags="PositionProportional" Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="Transparent"
+                    AbsoluteLayout.LayoutBounds="0.5,0,50,50" VerticalOptions="Fill" HorizontalOptions="Fill">
+                <Image Source="bethanylogowithborder.png" VerticalOptions="Start" Grid.Row="0" Grid.RowSpan="2"></Image>
+            </Frame>
+        </AbsoluteLayout>
+    </Grid>
+</ContentPage>

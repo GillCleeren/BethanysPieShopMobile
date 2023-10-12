@@ -2,20 +2,45 @@
 using BethanysPieShop.API.Models;
 using BethanysPieShop.API.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BethanysPieShop.API.Controllers
 {
     [Route("api/[controller]")]
     public class AuthenticationController : Controller
     {
-        public AuthenticationController()
+        private readonly ILogger<AuthenticationController> _logger;
+        public AuthenticationController(ILogger<AuthenticationController> logger)
         {
+            _logger = logger;
         }
 
         [HttpPost]
         [Route("[action]")]
-        public IActionResult Authenticate(string userName, string password)
+        //public IActionResult Authenticate(string userName, string password)
+        public IActionResult Authenticate([FromBody] AuthenticationRequest authenticationRequest)
         {
+            _logger.LogInformation($"authenticationRequest = {authenticationRequest}");
+            
+            var userName = authenticationRequest.UserName;
+
+            _logger.LogInformation($"userName = {authenticationRequest.UserName}");
+            _logger.LogInformation($"password = {authenticationRequest.Password}");
+            if (userName.ToLower() == "joe")
+            {
+                return Ok(new AuthenticationResponse
+                {
+                    IsAuthenticated = false,
+                    User = new User()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        UserName = userName,
+                        FirstName = "Dummy",
+                        LastName = "Dummy",
+                        Email = "test@something.com"
+                    }
+                });
+            }
             return Ok(new AuthenticationResponse
             {
                 IsAuthenticated = true,
